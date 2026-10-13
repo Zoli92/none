@@ -2,7 +2,7 @@ name: Discogs watcher
 
 on:
   schedule:
-    - cron: "*/10 * * * *"   # every 10 min (GitHub may delay runs by a few minutes)
+    - cron: "3-59/10 * * * *"   # every 10 min at :03, :13, ... (GitHub may delay runs by a few minutes)
   workflow_dispatch:
     inputs:
       test_alert:
