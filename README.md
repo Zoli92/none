@@ -56,7 +56,8 @@ every variant you'd buy.
 ## How it works
 - Asks the Discogs API how many copies are for sale per release.
 - Alerts when the count **goes up** (new listing), not on every run.
-- Saves the counts in `state.json`, committed back to the repo only when they change.
+- Saves the counts in `state.github.json`, committed back to the repo only when they change.
+  A copy run on your own computer keeps its counts in `state.json`, which is not committed.
 - GitHub pauses schedules after 60 days of no repo activity, so the workflow
   makes an empty "Keepalive" commit every ~50 days.
 - If GitHub ever emails you that the workflow was disabled, just re-enable it

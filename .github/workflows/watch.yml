@@ -35,6 +35,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           DISCOGS_TOKEN: ${{ secrets.DISCOGS_TOKEN }}
           CURRENCY: EUR
+          STATE_FILE: state.github.json
         run: |
           if [ "${{ inputs.test_alert }}" = "true" ]; then
             python watch.py --test
@@ -46,8 +47,8 @@ jobs:
         run: |
           git config user.name "discogs-watcher"
           git config user.email "discogs-watcher@users.noreply.github.com"
-          if [ -n "$(git status --porcelain state.json)" ]; then
-            git add state.json
+          if [ -n "$(git status --porcelain state.github.json)" ]; then
+            git add state.github.json
             git commit -m "Update for-sale counts"
           else
             # GitHub pauses scheduled workflows after 60 days without repo activity.
